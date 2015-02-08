@@ -1,8 +1,28 @@
 # Disable the startup message
 startup_message off
 
-# Set a large scrollback buffer
-defscrollback 32000
+# Display screen info: machine, screens, load, date + time
+hardstatus  alwayslastline
+hardstatus  string '%{= Wk}[ %{r}%H %{k}][%= %{=kB}%?%-Lw%?%{r}(%{k}%n*%f %t%?(%u)%?%{r})%{k}%?%+Lw%?%?%= %{k}][ %{r}%l%{k} ][ %{r}%d/%m/%y - %c %{k}]'
 
-# Always start `screen` with UTF-8 enabled (`screen -U`)
-defutf8 on
+# Scroll back lines
+defscrollback 30000
+
+# Detach if the terminal dies
+autodetach on
+
+# No idea.
+termcapinfo xterm*|Eterm|mlterm|rxvt 'hs:ts=\E]0;:fs=\007:ds=\E]0;screen\007'
+defhstatus "screen ^E (^Et) | $USER@^EH"
+
+# allow bold colors
+attrcolor b ".I"
+
+# 256 terminal for xterm
+term 'xterm-256color'
+
+# shell title...
+shelltitle "$ |bash"
+
+# changing the ctrl char to SPACE because ctrl+a is useful on a Mac
+escape ^Xx
